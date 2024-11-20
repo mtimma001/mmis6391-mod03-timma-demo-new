@@ -1,0 +1,13 @@
+DBML Document
+
+Table runners {
+    runner_id int [pk, increment] // Primary key, Auto Increment
+    first_name varchar(45)       // Runner's first name
+    last_name varchar(45)        // Runner's last name
+}
+
+Table samples {
+    sample_id int [pk, increment] // Primary key, Auto Increment
+    sample_name varchar(45)       // Name of the sample
+    sample_size varchar(45)       // Size of the sample
+}
