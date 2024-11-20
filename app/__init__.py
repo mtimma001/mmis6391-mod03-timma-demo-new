@@ -6,10 +6,8 @@ app = create_app()
 app.secret_key = 'my-super-secret'  # Replace with an environment variable
 
 # Register Blueprints
-from app.blueprints.samples import samples
 from app.blueprints.runners import runners
 
-app.register_blueprint(samples)
 app.register_blueprint(runners)
 
 from . import routes
