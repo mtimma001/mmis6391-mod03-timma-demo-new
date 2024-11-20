@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Runners</h1>
+
+    <!-- Form to add a new runner -->
+    <form method="POST" action="{{ url_for('runners.runner') }}">
+        <div class="form-row">
+            <div class="col">
+                <input type="text" class="form-control" name="first_name" placeholder="First Name" required>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" name="last_name" placeholder="Last Name" required>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary">Add Runner</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- List of all runners -->
+    <div class="mt-5">
+        <h2 class="text-center mb-4">All Runners</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Runner ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for runner in all_runners %}
+                <tr>
+                    <td>{{ runner.runner_id }}</td>
+                    <td>{{ runner.first_name }}</td>
+                    <td>{{ runner.last_name }}</td>
+                    <td>
+                        <a href="{{ url_for('runners.update_runner', runner_id=runner.runner_id) }}" class="btn btn-warning btn-sm">Update</a>
+                        <form method="POST" action="{{ url_for('runners.delete_runner', runner_id=runner.runner_id) }}" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
